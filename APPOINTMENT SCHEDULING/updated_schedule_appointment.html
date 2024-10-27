@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styling.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link href="https://api.fontshare.com/v2/css?f[]=excon@900&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=excon@100,900&display=swap" rel="stylesheet">
+  <title>Appointment Scheduler</title>
+
+</head>
+
+<body>
+  <div class="auth-buttons">
+    <button class="login-btn">Login</button>
+    <button class="signup-btn">Sign Up</button>
+  </div>
+  <!-- Sidebar Navigation -->
+  <aside>
+    <nav>
+      <ul>
+        <li><a href="#" class="active"><i class="bx bx-home-circle"></i><span>Home</span></a></li>
+        <li><a href="#"><i class="bx bx-user"></i><span>Profile</span></a></li>
+        <li><a href="#"><i class="bx bx-street-view"></i><span>Portal</span></a></li>
+        <li><a href="#"><i class="bx bx-capsule"></i><span>Prescription Manager</span></a></li>
+        <li><a href="#"><i class='bx bxs-info-circle'></i><span>About</span></a></li>
+        <li><a href="#"><i class="bx bxs-envelope"></i><span>Contact</span></a></li>
+        <li><a href="updated_schedule_appointment.html"><i class="bx bx-calendar-plus"></i><span>Schedule
+              Appointment</span></a></li>
+        <li><a href="#" data-resize-btn><i class="bx bx-chevrons-right"></i><span>Collapse</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <div class="heading">
+      <h1>BOOK A DOCTORS</h1>
+      <h1>APPOINTMENT</h1>
+    </div>
+    <div class="calendar">
+      <div class="label-flex">
+      <div>
+        <label for="datePicker">CHOOSE A DATE:</label>
+        <input type="date" id="datePicker">
+      </div>
+      <div>
+        <label for="doctorSelect">CHOOSE A DOCTOR:</label>
+        <select id="doctorSelect">
+          <option value="doctor1">Dr. Smith</option>
+          <option value="doctor2">Dr. Johnson</option>
+          <option value="doctor3">Dr. Brown</option>
+        </select>
+      </div>
+    </div>
+      <div class="time-slots">
+        <!-- Time Slots -->
+        <div class="slot">8:00 AM <button class="book-btn">Book</button></div>
+        <div class="slot">9:00 AM <button class="book-btn">Book</button></div>
+        <div class="slot">10:00 AM <button class="book-btn">Book</button></div>
+        <div class="slot">11:00 AM <button class="book-btn">Book</button></div>
+        <div class="slot">2:00 PM <button class="book-btn">Book</button></div>
+        <div class="slot">3:00 PM <button class="book-btn">Book</button></div>
+        <div class="slot">4:00 PM <button class="book-btn">Book</button></div>
+        <div class="slot">5:00 PM <button class="book-btn">Book</button></div>
+        <div class="slot">6:00 PM <button class="book-btn">Book</button></div>
+        <div class="slot">7:00 PM <button class="book-btn">Book</button></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+
+</html>

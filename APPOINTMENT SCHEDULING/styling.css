@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   --sb-width: 5rem;
   font-family: 'Array', sans-serif;
@@ -15,6 +16,8 @@ body {
 
 }
 
+
+
 body.sb-expanded {
   --sb-width: 12.5rem;
 }
@@ -22,6 +25,8 @@ body.sb-expanded {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
+
+
 /* Typography */
 h1 {
     font-size: 2rem;
@@ -31,7 +36,7 @@ h1 {
     font-family: 'Excon', sans-serif;
     -webkit-background-clip: text;
     color: transparent;
-    animation: wave 2s ease infinite;
+    animation: wave 10s ease infinite;
     text-align: center;
     margin-bottom: 0.0rem;
 
@@ -50,6 +55,8 @@ h1 {
   -webkit-text-stroke: 1px #2d6a4f; /* Light outline */
   /* color: transparent; Makes the stroke color dominant */ 
 }
+
+
 h3{
   background: linear-gradient(to bottom, #081c15, #2d6a4f, #40916c);
   -webkit-background-clip: text;
@@ -67,11 +74,15 @@ h3{
   margin-bottom: -1.35rem;
   color: aliceblue; */
 }
+
+
 .heading{
   
   gap: 0.25em;
   align-items: center;
 }
+
+
 
 p {
   margin-bottom: 1.5rem;
@@ -79,13 +90,16 @@ p {
 
 /* Sidebar */
 aside {
-  /*overflow-y:scroll;*/
+  overflow-y:auto;
   position: fixed;
+  top: 0;
+  left: 0;
   inset: 0 auto 0 0;
   width: var(--sb-width);
   padding: 1rem;
   background: linear-gradient(to bottom, #e0e0e0, #b3b3b3, #808080);
   transition: width 0.5s ease-in-out;
+  
 }
 
 nav {

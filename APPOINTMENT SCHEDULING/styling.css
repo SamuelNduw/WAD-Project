@@ -35,6 +35,7 @@ h1 {
     background-size: 200% 200%;
     font-family: 'Excon', sans-serif;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     animation: wave 10s ease infinite;
     text-align: center;
@@ -60,6 +61,7 @@ h1 {
 h3{
   background: linear-gradient(to bottom, #081c15, #2d6a4f, #40916c);
   -webkit-background-clip: text;
+  background-clip: text; 
   -webkit-text-fill-color: transparent;
   font-family: 'Excon', sans-serif;
   font-size: 2.5rem;
@@ -97,7 +99,7 @@ aside {
   inset: 0 auto 0 0;
   width: var(--sb-width);
   padding: 1rem;
-  background: linear-gradient(to bottom, #e0e0e0, #b3b3b3, #808080);
+  background: linear-gradient(to bottom, #a6a6a6, #666666, #333333);
   transition: width 0.5s ease-in-out;
   
 }
@@ -242,4 +244,45 @@ label{
 .label-flex{
   display: flex;
   gap:5em;
+}
+
+
+/* Appointments section */
+.appointments {
+  margin-top: 20px;
+}
+
+.appointment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #2d6a4f; /* Match button color */
+  color: #fff;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+/* Button styling */
+.complete-btn, .cancel-btn {
+  background-color: #1b4332; /* Match green color from book-btn */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.complete-btn:hover, .cancel-btn:hover {
+  background-color: #555; /* Darker shade for hover */
+}
+
+/* Button container */
+.auth-buttons {
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }

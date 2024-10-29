@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=excon@900&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=excon@100,900&display=swap" rel="stylesheet">
+    <title>Appointment Scheduler</title>
+  
+  </head>
+  
+
+<body>
+  <!-- Authentication Buttons -->
+  <div class="auth-buttons">
+    <button class="login-btn">Login</button>
+    <button class="signup-btn">Sign Up</button>
+  </div>
+  
+  <!-- Sidebar Navigation -->
+  <aside>
+    <nav>
+      <ul>
+        <li><a href="#" class="active"><i class="bx bx-home-circle"></i><span>Home</span></a></li>
+        <li><a href="#"><i class="bx bx-user"></i><span>Profile</span></a></li>
+        <li><a href="#"><i class="bx bx-street-view"></i><span>Portal</span></a></li>
+        <li><a href="#"><i class="bx bx-capsule"></i><span>Prescription Manager</span></a></li>
+        <li><a href="#"><i class='bx bxs-info-circle'></i><span>About</span></a></li>
+        <li><a href="#"><i class="bx bxs-envelope"></i><span>Contact</span></a></li>
+        <li><a href="updated_schedule_appointment.html"><i class="bx bx-calendar-plus"></i><span>Schedule
+              Appointment</span></a></li>
+        <li><a href="#" data-resize-btn><i class="bx bx-chevrons-right"></i><span>Collapse</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content for Doctor's Appointment Management -->
+  <main>
+    <div class="heading">
+      <h1>MANAGE PATIENT APPOINTMENTS</h1>
+    </div>
+    <div class="appointments">
+      <!-- Sample Appointment Entries -->
+      <div class="appointment">
+        <p>Patient: John Doe | Time: 9:00 AM</p>
+        <button class="complete-btn">Mark as Completed</button>
+        <button class="cancel-btn">Cancel Appointment</button>
+      </div>
+      <div class="appointment">
+        <p>Patient: Jane Smith | Time: 10:00 AM</p>
+        <button class="complete-btn">Mark as Completed</button>
+        <button class="cancel-btn">Cancel Appointment</button>
+      </div>
+      <!-- Add more appointment entries here as needed -->
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="doctor_script.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

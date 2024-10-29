@@ -243,3 +243,44 @@ label{
   display: flex;
   gap:5em;
 }
+
+
+/* Appointments section */
+.appointments {
+  margin-top: 20px;
+}
+
+.appointment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #2d6a4f; /* Match button color */
+  color: #fff;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+/* Button styling */
+.complete-btn, .cancel-btn {
+  background-color: #1b4332; /* Match green color from book-btn */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.complete-btn:hover, .cancel-btn:hover {
+  background-color: #555; /* Darker shade for hover */
+}
+
+/* Button container */
+.auth-buttons {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}

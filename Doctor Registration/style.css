@@ -1,10 +1,9 @@
-/* Set a background image for the body and center content */
+/* Set a background color for the body and center content */
 body {
-    font-family: Arial, sans-serif;
-    background-image: url('images/OIP.jpeg'); /* Replace with your image file */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url("images/laboratory-2815641_1280.jpg");
+    font-family: 'Array', sans-serif;
+    /* background-color: #343a40; */
+    color: aliceblue;
     height: 100vh;
     margin: 0;
     display: flex;
@@ -12,20 +11,33 @@ body {
     align-items: center;
 }
 
+
+
 /* Main registration container */
 .registration-container {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    background-color: rgba(255, 255, 255, 0.1); /* Adjusted for transparency */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 400px;
     text-align: center;
+    backdrop-filter: blur(5px);
 }
 
 h2 {
-    color: #333;
+    color: #2d6a4f; /* Accent color for headers */
+    font-family: 'Excon', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #081c15, #2d6a4f, #40916c, #4ea8de, #80ffdb);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: wave 10s ease infinite;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 /* Label styling */
@@ -33,7 +45,7 @@ label {
     display: block;
     margin-top: 10px;
     font-size: 0.9em;
-    color: #555;
+    color: aliceblue;
 }
 
 /* Input fields */
@@ -46,6 +58,8 @@ input[type="tel"] {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #2d6a4f;
+    color: aliceblue;
 }
 
 /* Submit button styling */
@@ -53,22 +67,24 @@ button {
     margin-top: 15px;
     width: 100%;
     padding: 10px;
-    background-color: #28a745;
+    background-color: #1b4332;
     color: white;
     border: none;
     border-radius: 4px;
     font-size: 1em;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #555;
+    color: white;
 }
 
 /* Message display */
 #message {
     margin-top: 15px;
-    color: #28a745;
+    color: #80ffdb;
 }
 
 /* Dropdown menu styling */
@@ -81,23 +97,24 @@ button:hover {
 .dropdown-toggle {
     width: 100%;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #2d6a4f;
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: left;
+    color: aliceblue;
     cursor: pointer;
 }
 
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: #ffffff;
+    background-color: #2d6a4f;
     border: 1px solid #ddd;
     border-radius: 4px;
     width: 100%;
     max-height: 150px;
     overflow-y: auto;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
     z-index: 1;
     margin-top: 5px;
 }
@@ -106,12 +123,12 @@ button:hover {
     display: block;
     padding: 10px;
     font-size: 0.9em;
-    color: #333;
+    color: aliceblue;
     cursor: pointer;
 }
 
 .dropdown-menu label:hover {
-    background-color: #f1f1f1;
+    background-color: #40916c;
 }
 
 /* Show dropdown when open */

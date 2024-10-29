@@ -1,4 +1,4 @@
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
+document.getElementById("registrationForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
     // Collect field values
@@ -14,7 +14,7 @@ document.getElementById("registrationForm").addEventListener("submit", function(
 
     // Get checked languages from dropdown
     const languages = Array.from(document.querySelectorAll('.dropdown-menu input[type="checkbox"]:checked'))
-                           .map(checkbox => checkbox.value);
+        .map(checkbox => checkbox.value);
 
     const declaration = document.getElementById("declaration").checked;
 
@@ -31,19 +31,28 @@ document.getElementById("registrationForm").addEventListener("submit", function(
 });
 
 // Dropdown toggle functionality
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const dropdownToggle = document.querySelector(".dropdown-toggle");
     const dropdownMenu = document.querySelector(".dropdown-menu");
 
     // Toggle dropdown menu visibility
-    dropdownToggle.addEventListener("click", function() {
+    dropdownToggle.addEventListener("click", function () {
         dropdownMenu.parentElement.classList.toggle("open");
     });
 
     // Close dropdown when clicking outside
-    document.addEventListener("click", function(event) {
+    document.addEventListener("click", function (event) {
         if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
             dropdownMenu.parentElement.classList.remove("open");
         }
+    });
+
+
+    const toggleButton = document.querySelector("[data-resize-btn]");
+    const body = document.body;
+
+    toggleButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        body.classList.toggle("sb-expanded");
     });
 });

@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doctor Registration</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="uni-sidebar.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link href="https://api.fontshare.com/v2/css?f[]=excon@900&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=excon@100,900&display=swap" rel="stylesheet">
 </head>
+
 <body>
+  <div class="auth-buttons">
+    <button class="login-btn">Login</button>
+    <button class="signup-btn">Sign Up</button>
+  </div>
+  <!-- Sidebar Navigation -->
+  <aside>
+    <nav>
+      <ul>
+        <li><a href="#" class="active"><i class="bx bx-home-circle"></i><span>Home</span></a></li>
+        <li><a href="#"><i class="bx bx-user"></i><span>Profile</span></a></li>
+        <li><a href="#"><i class="bx bx-street-view"></i><span>Portal</span></a></li>
+        <li><a href="#"><i class="bx bx-capsule"></i><span>Prescription Manager</span></a></li>
+        <li><a href="#"><i class='bx bxs-info-circle'></i><span>About</span></a></li>
+        <li><a href="#"><i class="bx bxs-envelope"></i><span>Contact</span></a></li>
+        <li><a href="appointment.html"><i class="bx bx-calendar-plus"></i><span>Schedule
+              Appointment</span></a></li>
+        <li><a href="#" data-resize-btn><i class="bx bx-chevrons-right"></i><span>Collapse</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
   <div class="registration-container">
     <h2>Doctor Registration</h2>
     <form id="registrationForm">
@@ -21,45 +49,24 @@
 
       <label for="phone">Phone Number</label>
       <input type="tel" id="phone" name="phone" required>
-      
-      <label for="country">Country</label>
-      <input type="text" id="country" name="country" required>
 
-      <label for="city">City</label>
-      <input type="text" id="city" name="city" required>
-      
       <label for="specialization">Specialization</label>
       <input type="text" id="specialization" name="specialization" required>
 
+      <label for="licenceNumber">Licence Number</label>
+      <input type="text" id="licenceNumber" name="licenceNumber" required>
+
       <label for="licenseNumber">License Number</label>
       <input type="text" id="licenseNumber" name="licenseNumber" required>
-
-      <label for="clinicAffiliation">Clinic/Hospital Affiliation</label>
-      <input type="text" id="clinicAffiliation" name="clinicAffiliation" required>
-
-      <label for="languages">Languages Spoken</label>
-      <div class="dropdown">
-        <button type="button" class="dropdown-toggle">Select Languages</button>
-        <div class="dropdown-menu">
-          <label><input type="checkbox" name="languages" value="English"> English</label>
-          <label><input type="checkbox" name="languages" value="Spanish"> Spanish</label>
-          <label><input type="checkbox" name="languages" value="French"> French</label>
-          <label><input type="checkbox" name="languages" value="German"> German</label>
-          <label><input type="checkbox" name="languages" value="Chinese"> Chinese</label>
-          <label><input type="checkbox" name="languages" value="Arabic"> Arabic</label>
-        </div>
-      </div>
-
-      <label>
-        <input type="checkbox" id="declaration" name="declaration" required>
-        I declare that the information provided is true and accurate.
-      </label>
-
       <button type="submit">Register</button>
+      <button type="link" href="#">login</button>
     </form>
     <p id="message"></p>
   </div>
-
+</main>
   <script src="registration.js"></script>
+  <script src="script.js"></script>
 </body>
+
+
 </html>

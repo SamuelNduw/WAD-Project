@@ -1,0 +1,84 @@
+/* Style for the entire page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f8fb;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #000407;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+/* About Section */
+.about, .features, .contact {
+    padding: 2rem;
+    text-align: center;
+}
+
+.about h2, .features h2, .contact h2 {
+    color: #0056a3;
+}
+
+/* Images */
+.images {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.images img {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+    gap: 0.5rem;
+}
+
+input, textarea, button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #0056a3;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #003d7a;
+}
+
+/* Footer */
+footer {
+    background-color: #003d7a;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}

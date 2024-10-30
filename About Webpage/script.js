@@ -1,8 +1,11 @@
-// You can add interactivity here, for example a simple alert when the form is submitted
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
+// script.js
 
-    form.addEventListener("submit", function (event) {
-        alert("Thank you for reaching out! We will get back to you soon.");
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.querySelector("[data-resize-btn]");
+  const body = document.body;
+
+  toggleButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    body.classList.toggle("sb-expanded");
+  });
 });

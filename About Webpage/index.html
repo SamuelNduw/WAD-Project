@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Electronic Health Information System</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="uni-sidebar.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=excon@900&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=excon@100,900&display=swap" rel="stylesheet">
+    <script src="script1.js" defer></script>
 </head>
+
 <body>
+    <div class="auth-buttons">
+        <button class="login-btn">Login</button>
+        <button class="signup-btn">Sign Up</button>
+    </div>
+    <!-- Sidebar Navigation -->
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="#" class="active"><i class="bx bx-home-circle"></i><span>Home</span></a></li>
+                <li><a href="#"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                <li><a href="#"><i class="bx bx-street-view"></i><span>Portal</span></a></li>
+                <li><a href="#"><i class="bx bx-capsule"></i><span>Prescription Manager</span></a></li>
+                <li><a href="#"><i class='bx bxs-info-circle'></i><span>About</span></a></li>
+                <li><a href="#"><i class="bx bxs-envelope"></i><span>Contact</span></a></li>
+                <li><a href="appointment.html"><i class="bx bx-calendar-plus"></i><span>Schedule
+                            Appointment</span></a></li>
+                <li><a href="#" data-resize-btn><i class="bx bx-chevrons-right"></i><span>Collapse</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
     <header>
         <h1>Virtual Medical Doctor</h1>
         <p>Your trusted platform for efficient healthcare information management.</p>
@@ -15,7 +42,8 @@
 
     <section class="about">
         <h2>About VMD</h2>
-        <p>VMD is an advanced platform designed to securely store, manage, and retrieve patient information, enabling healthcare professionals to provide better care and streamline medical processes.</p>
+        <p>VMD is an advanced platform designed to securely store, manage, and retrieve patient information, enabling
+            healthcare professionals to provide better care and streamline medical processes.</p>
         <div class="images">
             <img src="./images/doctor.jpeg" alt="Doctor consulting a patient">
             <img src="./images/patients.jpeg" alt="Patients in recovery">
@@ -43,11 +71,12 @@
             <textarea id="message" name="message" required></textarea>
             <button type="submit">Submit</button>
         </form>
-        
-    </section>
 
+    </section>
+    <script src="script.js"></script>
     <footer>
         <p>&copy; 2024 Electronic Health Information System. All Rights Reserved.</p>
     </footer>
 </body>
+
 </html>

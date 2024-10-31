@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Portal - EHIS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Patient Portal - Electronic Health Information System (EHIS)</h1>
+    </header>
+
+    <!-- Appointment Section -->
+    <section id="appointments">
+        <h2>Book an Appointment</h2>
+        <form id="appointment-form">
+            <label for="doctor">Select Doctor:</label>
+            <select id="doctor" name="doctor">
+                <option>Dr. Matheus Astofel</option>
+                <option>Dr. Jason Petrus</option>
+            </select>
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" required>
+            <label for="time">Select Time:</label>
+            <input type="time" id="time" required>
+            <button type="submit">Book Appointment</button>
+        </form>
+        
+        <h3>Upcoming Appointments</h3>
+        <ul id="appointment-list">
+            <!-- Appointments will display here -->
+        </ul>
+    </section>
+
+    <!-- Medical History Section -->
+    <section id="medical-history">
+        <h2>Medical History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Diagnosis</th>
+                    <th>Treatment/Doctor’s Comments</th>
+                    <th>Prescription</th>
+                </tr>
+            </thead>
+            <tbody id="history-list">
+                <!-- Medical history records displayed here -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Prescription Section -->
+    <section id="prescriptions">
+        <h2>Prescriptions</h2>
+        <ul id="prescription-list">
+            <!-- Prescription data listed here -->
+        </ul>
+    </section>
+
+    <!-- Messaging Section -->
+    <section id="messaging">
+        <h2>Message Your Doctor</h2>
+        <label for="doctor-id">Select Doctor:</label>
+        <select id="doctor-id" name="doctor-id">
+            <option value="matheus">Dr. Matheus Astofel</option>
+            <option value="petrus">Dr. Jason Petrus</option>
+        </select>
+        <div id="chat-box">
+            <!-- Messages appear here -->
+        </div>
+        <form id="message-form">
+            <input type="text" id="message" placeholder="Type your message here..." required>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

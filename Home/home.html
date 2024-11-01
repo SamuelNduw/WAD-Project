@@ -9,18 +9,15 @@
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link href="https://api.fontshare.com/v2/css?f[]=excon@900&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=excon@100,900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-    <header class="header">
-        <a href="home.html" class="Logo">VMD</a>
-    </header>
-
     <aside>
         <nav>
           <ul>
             <li><a href="home.html" class="active"><i class="bx bx-home-circle"></i><span>Home</span></a></li>
-            <li><a href="#"><i class="bx bx-user"></i><span>Profile</span></a></li>
+            <li id="fetchButton"><a href="#"><i class="bx bx-user"></i><span>Profile</span></a></li>
             <li><a href="#"><i class="bx bx-street-view"></i><span>Portal</span></a></li>
             <li><a href="#"><i class="bx bx-capsule"></i><span>Prescription Manager</span></a></li>
             <li><a href="#"><i class='bx bxs-info-circle'></i><span>About</span></a></li>
@@ -40,17 +37,17 @@
               <p class="description">Providing compassionate and comprehensive <br> healthcare services for you and <br> family.</p>
 
               <div class="buttons">
-                <a href="#" class="button book-now">Book Now</a>
+                <a href="#" class="button book-now">Get Started</a>
                 <a href="#" class="button contact-us">Contact Us</a>
-              </div>
-
+              </div> 
             </div>
-            <div class="hero-image-wrapper">
+            <!-- <div class="hero-image-wrapper">
               <img src="Pictures\doctor-removebg-preview.png" alt="" class="hero-image">
-            </div>
+            </div> */!-->
           </div>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 
 </html>

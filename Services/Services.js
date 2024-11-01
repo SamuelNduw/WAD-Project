@@ -27,4 +27,13 @@ const patientRegistration = async (formData) => {
     return response;
 }
 
-export { userRegistration, doctorRegistration, patientRegistration };
+const login = async (formData) => {
+    const response = await axios.post(`${URL}/login/`, formData, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    return response;
+}
+
+export { userRegistration, doctorRegistration, patientRegistration, login };

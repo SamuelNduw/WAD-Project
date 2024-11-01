@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #141D26;
+    color: #ffffff;
+}
+.form-container {
+    width: 300px; 
+    padding: 20px;
+    background-color: #243447;
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+h2 {
+    text-align: center;
+    color: #ffffff;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+.form-group input[type="text"], 
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #4A4063;
+    border-radius: 20px; 
+    background-color: #141D26;
+    color: #ffffff;
+    height: 36px; 
+}
+.form-group input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4A4063;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    height: 36px; 
+}
+.form-group input[type="submit"]:hover {
+    background-color: #34304a;
+}
+.redirect-link {
+    text-align: center;
+    margin-top: 10px;
+    color: #ffffff;
+    font-size: 12px;
+}
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    height: 36px; 
+}
+.google {
+    background-color: #ffffff;
+    color: #141D26;
+    border: 1px solid #4A4063;
+}
+.google:hover {
+    background-color: #f1f3f5;
+}
+.apple {
+    background-color: #4A4063;
+    color: #ffffff;
+    border: 1px solid #4A4063;
+}
+.apple:hover {
+    background-color: #3c374f;
+}

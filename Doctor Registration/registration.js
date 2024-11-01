@@ -2,9 +2,6 @@ import  {userRegistration, doctorRegistration, patientRegistration}  from "../Se
 
 let userRegData = {};
 
-// document.getElementById("toggleDoctor").addEventListener("click", showForm("doctor"));
-// document.getElementById("togglePatient").addEventListener("click", showForm("patient"));
-
 // Doctor Registration Logic
 document.getElementById("doctorRegistrationForm").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -31,31 +28,34 @@ document.getElementById("doctorRegistrationForm").addEventListener("submit", fun
             is_doctor: true
         }
         
-        async () => {
+        const doctorRegistrationHandler = async () => {
             try{
-                dataResponse = await userRegistration(userRegData);
+                const dataResponse = await userRegistration(userRegData);
 
                 const doctorData = {
-                    user: dataResponse.id,
+                    user: dataResponse.data.id,
                     specialization: specialization,
                     license_number: licenseNumber,
                     contact_number: phone 
                 }
-                dataResponse2 = await doctorRegistration(doctorData);
-                setCookie('roleId', dataResponse2.id, 7);
-                setCookie('userId', dataResponse2.user, 7);
+                const dataResponse2 = await doctorRegistration(doctorData);
+                setCookie('roleId', dataResponse2.data.id, 7);
+                setCookie('userId', dataResponse2.data.user, 7);
                 setCookie('role', "doctor", 7);
                 alert("Doctor Registration Successful");
                 console.log(dataResponse, dataResponse2, "successful")
             } catch(e) {
+                console.error("Error during doctor registration: ", e);
                 alert('An error occurred while registering the doctor. Please try again.')
             }
         }
+        doctorRegistrationHandler();
     } else {
         alert("Please fill in all fields");
     }
 });
 
+// Patient Registration Logic
 document.getElementById("patientRegistrationForm").addEventListener("submit", function(event){
     event.preventDefault();
     console.log("button patient pressed")

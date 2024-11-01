@@ -54,12 +54,25 @@ class LoginView(APIView):
 
         user = authenticate(username=username, password=password)
         if user is not None:
+            doctor_id = None
+            patient_id = None
+
+            if user.is_doctor:
+                doctor = Doctor.objects.filter(user=user).first()
+                doctor_id = doctor.id if doctor else None
+
+            if user.is_patient:
+                patient = Patient.objects.filter(user=user).first()
+                patient_id = patient.id if patient else None
+
             return Response({
                 "message": "Login successful",
                 "user_id": user.id,
                 "username": user.username,
                 "is_patient": user.is_patient,
-                "is_doctor": user.is_doctor
+                "is_doctor": user.is_doctor,
+                "doctor_id": doctor_id,
+                "patient_id": patient_id
             }, status=status.HTTP_200_OK)
         else:
             return Response({"error", "Invalid username or password"}, status.status.HTTP_400_BAD_REQUEST)

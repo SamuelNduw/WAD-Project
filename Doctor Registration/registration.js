@@ -1,6 +1,10 @@
-import { userRegistration, doctorRegistration, patientRegistration } from "../Services/Services";
+import  {userRegistration, doctorRegistration, patientRegistration}  from "../Services/Services.js";
 
-const userRegData = {};
+let userRegData = {};
+
+// document.getElementById("toggleDoctor").addEventListener("click", showForm("doctor"));
+// document.getElementById("togglePatient").addEventListener("click", showForm("patient"));
+
 // Doctor Registration Logic
 document.getElementById("doctorRegistrationForm").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -42,6 +46,7 @@ document.getElementById("doctorRegistrationForm").addEventListener("submit", fun
                 setCookie('userId', dataResponse2.user, 7);
                 setCookie('role', "doctor", 7);
                 alert("Doctor Registration Successful");
+                console.log(dataResponse, dataResponse2, "successful")
             } catch(e) {
                 alert('An error occurred while registering the doctor. Please try again.')
             }
@@ -53,7 +58,7 @@ document.getElementById("doctorRegistrationForm").addEventListener("submit", fun
 
 document.getElementById("patientRegistrationForm").addEventListener("submit", function(event){
     event.preventDefault();
-    
+    console.log("button patient pressed")
     const firstNamePatient = document.getElementById("firstNamePatient").value.trim();
     const lastNamePatient = document.getElementById("lastNamePatient").value.trim();
     const emailPatient = document.getElementById("emailPatient").value.trim();
@@ -63,6 +68,8 @@ document.getElementById("patientRegistrationForm").addEventListener("submit", fu
     const medicalHistory = document.getElementById("medicalHistory").value.trim();
     const password = document.getElementById("passwordPatient").value;
     const username = firstNamePatient + lastNamePatient;
+
+    console.log(firstNamePatient)
     
     if (firstNamePatient && lastNamePatient && emailPatient && dob && address && phonePatient && medicalHistory && password){
         userRegData =  {
@@ -71,74 +78,65 @@ document.getElementById("patientRegistrationForm").addEventListener("submit", fu
             password: password,
             first_name: firstNamePatient,
             last_name: lastNamePatient,
-            is_patient: false,
-            is_doctor: true
+            is_patient: true,
+            is_doctor: false
         }
-
-        async () => {
+        console.log("User data for registration: ", userRegData)
+        const patientRegistrationHandler = async () => {
             try{
-                dataResponse = await userRegistration(userRegData);
-
+                const dataResponse = await userRegistration(userRegData);
+                console.log("User registration response: ", dataResponse.data.id);
                 const patientData = {
-                    user: dataResponse.id,
+                    user: dataResponse.data.id,
                     date_of_birth: dob,
                     address: address,
                     phone_number: phonePatient,
                     medical_history: medicalHistory
                 }
-                dataResponse2 = await patientRegistration(patientData);
-                setCookie('roleId', dataResponse2.id, 7);
-                setCookie('userId', dataResponse2.user, 7);
+                const dataResponse2 = await patientRegistration(patientData);
+                setCookie('roleId', dataResponse2.data.id, 7);
+                setCookie('userId', dataResponse2.data.user, 7);
                 setCookie('role', "patient", 7)
                 alert("Patient Registration Successful");
             } catch(e){
-                alert('An error occurred while registering the doctor. Please try again.')
+                console.error("Error during patient registration: ", e);
+                alert('An error occurred while registering the patient. Please try again.')
             }
         }
+        patientRegistrationHandler();
     } else{
         alert("Please fill in all fields");
     }
 });
 
 // Dropdown toggle functionality
-document.addEventListener("DOMContentLoaded", function () {
-    const dropdownToggle = document.querySelector(".dropdown-toggle");
-    const dropdownMenu = document.querySelector(".dropdown-menu");
+// document.addEventListener("DOMContentLoaded", function () {
+//     const dropdownToggle = document.querySelector(".dropdown-toggle");
+//     const dropdownMenu = document.querySelector(".dropdown-menu");
 
-    // Toggle dropdown menu visibility
-    dropdownToggle.addEventListener("click", function () {
-        dropdownMenu.parentElement.classList.toggle("open");
-    });
+//     // Toggle dropdown menu visibility
+//     dropdownToggle.addEventListener("click", function () {
+//         dropdownMenu.parentElement.classList.toggle("open");
+//     });
 
-    // Close dropdown when clicking outside
-    document.addEventListener("click", function (event) {
-        if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.parentElement.classList.remove("open");
-        }
-    });
+//     // Close dropdown when clicking outside
+//     document.addEventListener("click", function (event) {
+//         if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+//             dropdownMenu.parentElement.classList.remove("open");
+//         }
+//     });
 
 
-    const toggleButton = document.querySelector("[data-resize-btn]");
-    const body = document.body;
+//     const toggleButton = document.querySelector("[data-resize-btn]");
+//     const body = document.body;
 
-    toggleButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        body.classList.toggle("sb-expanded");
-    });
-});
+//     toggleButton.addEventListener("click", (e) => {
+//         e.preventDefault();
+//         body.classList.toggle("sb-expanded");
+//     });
+// });
 
-function showForm(formType){
-    const doctorForm = document.getElementById('doctorForm');
-    const patientForm = document.getElementById('patientForm');
 
-    if (formType === 'doctor'){
-        doctorForm.style.display = 'block';
-        patientForm.style.display = 'none';
-    } else {
-        doctorForm.style.display = 'none';
-        patientForm.style.display = 'block'
-    }
-}
 
 function setCookie(name, value, days){
     let expires = "";

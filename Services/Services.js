@@ -1,7 +1,7 @@
 const URL = "http://localhost:8000/hospital";
 
-export const userRegistration = async (formData) => {
-    const response = await axios.post(`${URL}/users`, formData, {
+const userRegistration = async (formData) => {
+    const response = await axios.post(`${URL}/users/`, formData, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -9,8 +9,8 @@ export const userRegistration = async (formData) => {
     return response;
 }
 
-export const doctorRegistration = async (formData) => {
-    const response = await axios.post(`${URL}/doctors`, formData, {
+const doctorRegistration = async (formData) => {
+    const response = await axios.post(`${URL}/doctors/`, formData, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -18,11 +18,13 @@ export const doctorRegistration = async (formData) => {
     return response;
 }
 
-export const patientRegistration = async (formData) => {
-    const response = await axios.post(`${URL}/patient`, formData, {
+const patientRegistration = async (formData) => {
+    const response = await axios.post(`${URL}/patients/`, formData, {
         headers: {
             'Content-Type': 'application/json',
         },
     });
     return response;
 }
+
+export { userRegistration, doctorRegistration, patientRegistration };

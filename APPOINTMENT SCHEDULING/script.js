@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.toggle("sb-expanded");
   });
 
-  // // Set active class based on current URL
-  // const sidebarLinks = document.querySelectorAll("aside nav a");
-  // const currentPage = window.location.href;
+  // Set active class based on current URL
+  const sidebarLinks = document.querySelectorAll("aside nav a");
+  const currentPage = window.location.href;
 
   // sidebarLinks.forEach((link) => {
   //   if (link.href === currentPage) {

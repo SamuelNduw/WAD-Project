@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact_styles.css">
+    <script src="contact_script.js" defer></script>
+    <link rel="stylesheet" href="../uni-css/uni-sidebar.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=amulya@401&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+    <div class="auth-buttons">
+        <a class="login-btn" href="../Login/Login.html">Login</a>
+        <a class="signup-btn" href="../Login/SignUp.html">Sign Up</a>
+      </div>
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="../Home/home.html" class="active"><i class="bx bx-home-circle"></i><span>Home</span></a></li>
+                <li><a href="#"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                <li><a href="../PatientProfile/p_portal.html"><i class="bx bx-street-view"></i><span>Portal</span></a></li>
+                <li><a href="#"><i class="bx bx-capsule"></i><span>Prescription Manager</span></a></li>
+                <li><a href="../ContactUs/contact.html"><i class="bx bxs-envelope"></i><span>Contact</span></a></li>
+                <li><a href="../Relative Info/info_page.html"><i class='bx bx-plus-medical'></i><span>Relative Information</span></a></li>
+                <li><a href="../APPOINTMENT SCHEDULING/appointment.html"><i
+                            class="bx bx-calendar-plus"></i><span>ScheduleAppointment</span></a></li>
+                <li><a href="../About Webpage/about.html"><i class='bx bxs-info-circle'></i><span>About</span></a></li>
+                <li><a href="#" data-resize-btn><i class="bx bx-chevrons-right"></i><span>Collapse</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="container">
+        <section id="contact-info">
+            <h2>Our Contact Information</h2>
+            <p>If you have any questions, feedback, or need assistance, feel free to reach out to us. We're here to help!</p>
+            <ul>
+                <li><strong>Email:</strong> support@healthportal.com</li>
+                <li><strong>Phone:</strong> +123 456 789</li>
+                <li><strong>Address:</strong> 123 Health Street, Wellness City, HC 4567</li>
+            </ul>
+        </section>
+
+        <section id="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" rows="5" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <div id="form-response"></div>
+        </section>
+    </main>
+    <script src="../uni-css/script.js"></script>
+    <footer>
+        <p>&copy; 2024 Health Information Portal</p>
+    </footer>
+</body>
+</html>

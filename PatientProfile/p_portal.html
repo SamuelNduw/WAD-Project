@@ -5,15 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Portal - EHIS</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../uni-css/uni-sidebar.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=amulya@401&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <h1>Patient Portal - Electronic Health Information System (EHIS)</h1>
-    </header>
-
+    <div class="auth-buttons">
+        <a class="login-btn" href="../Login/Login.html">Login</a>
+        <a class="signup-btn" href="../Login/SignUp.html">Sign Up</a>
+    </div>
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="../Home/home.html" class="active"><i class="bx bx-home-circle"></i><span>Home</span></a></li>
+                <li><a href="#"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                <li><a href="../PatientProfile/p_portal.html"><i class="bx bx-street-view"></i><span>Portal</span></a></li>
+                <li><a href="#"><i class="bx bx-capsule"></i><span>Prescription Manager</span></a></li>
+                <li><a href="../ContactUs/contact.html"><i class="bx bxs-envelope"></i><span>Contact</span></a></li>
+                <li><a href="../Relative Info/info_page.html"><i class='bx bx-plus-medical'></i><span>Relative Information</span></a></li>
+                <li><a href="../APPOINTMENT SCHEDULING/appointment.html"><i
+                            class="bx bx-calendar-plus"></i><span>ScheduleAppointment</span></a></li>
+                <li><a href="../About Webpage/about.html"><i class='bx bxs-info-circle'></i><span>About</span></a></li>
+                <li><a href="#" data-resize-btn><i class="bx bx-chevrons-right"></i><span>Collapse</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+    <h1>Patient Portal - Electronic Health Information System (EHIS)</h1>
     <!-- Appointment Section -->
-    <section id="appointments">
+    <!-- <section id="appointments">
         <h2>Book an Appointment</h2>
         <form id="appointment-form">
             <label for="doctor">Select Doctor:</label>
@@ -30,9 +50,9 @@
         
         <h3>Upcoming Appointments</h3>
         <ul id="appointment-list">
-            <!-- Appointments will display here -->
-        </ul>
-    </section>
+             Appointments will display here -->
+         <!-- </ul>
+    </section> -->
 
     <!-- Medical History Section -->
     <section id="medical-history">
@@ -76,7 +96,11 @@
             <button type="submit">Send</button>
         </form>
     </section>
-
-    <script src="script.js"></script>
+</main>
+    <footer>
+        <p>&copy; 2024 Electronic Health Information System. All Rights Reserved.</p>
+    </footer>
+    <script src="../uni-css/script.js"></script>
+    <script src="portal_script.js"></script>
 </body>
 </html>

@@ -6,3 +6,4 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Thank you for reaching out! We will get back to you soon.");
     });
 });
+// script1.js

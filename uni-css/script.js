@@ -9,3 +9,4 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.toggle("sb-expanded");
   });
 });
+

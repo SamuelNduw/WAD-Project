@@ -1,33 +1,36 @@
 /* General Styling */
 body {
+    background-size: cover;
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
+    background-color: #343a40;
+    color: a#03071e;
     margin: 0;
     padding: 0;
+    background-image: url(Images/drarticle-primary-health-1024x576.png);
 }
 
 header {
-    background-color: #a2d5f2;
+    background-color: rgba(255, 255, 255, 0.1);
     padding: 20px;
     text-align: center;
 }
 
 h1 {
-    color: #fff;
+    color: #40916c;
     font-size: 24px;
 }
 
 section {
     margin: 20px;
     padding: 20px;
-    background-color: #e3f2fd;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
     border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 h2 {
-    color: #1a8cff;
+    color: #081c15;
     margin-bottom: 15px;
 }
 
@@ -44,8 +47,8 @@ input, select {
 }
 
 button {
-    background-color: #1a8cff;
-    color: white;
+    background-color: #1b4332;
+    color: aliceblue;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -53,7 +56,7 @@ button {
 }
 
 button:hover {
-    background-color: #0d6efd;
+    background-color: #40916c;
 }
 
 #appointment-list, #history-list, #prescription-list {
@@ -67,15 +70,62 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #081c15;
     padding: 8px;
 }
 
 #chat-box {
-    background-color: #e0f7fa;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #2a9d8f;
     height: 200px;
     overflow-y: auto;
     margin-bottom: 10px;
+}
+footer {
+    margin-left: var(--sb-width);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: #081c15;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    margin-left: var(--sb-width);
+    margin-top: 20px;
+    /* Space for the navbar */
+    padding: 20px;
+    transition: margin-left 0.5s ease-in-out;
+    overflow: auto;
+    resize: both;
+}
+h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+    background: linear-gradient( #031a33, #0b3b5f, #0d6e85, #103d56);
+    background-size: 200% 200%;
+    font-family: 'Excon', sans-serif;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: wave 10s ease infinite;
+    text-align: center;
+    margin-bottom: 0.0rem;
+
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    background: linear-gradient( #031a33, #0b3b5f, #0d6e85, #103d56);
+    background-size: 200% 200%;
+    font-family: 'Excon', sans-serif;
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* color: #081c15; */
+    animation: wave 10s ease infinite;
+    text-align: center;
+    margin: 1rem 0;
 }

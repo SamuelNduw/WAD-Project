@@ -1,15 +1,15 @@
 // Appointment Booking and Display
-document.getElementById('appointment-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const doctor = document.getElementById('doctor').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
+// document.getElementById('appointment-form').addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     const doctor = document.getElementById('doctor').value;
+//     const date = document.getElementById('date').value;
+//     const time = document.getElementById('time').value;
 
-    const appointment = `${doctor} - ${date} at ${time} <button onclick="cancelAppointment(this)">Cancel</button>`;
-    const listItem = document.createElement('li');
-    listItem.innerHTML = appointment;
-    document.getElementById('appointment-list').appendChild(listItem);
-});
+//     const appointment = `${doctor} - ${date} at ${time} <button onclick="cancelAppointment(this)">Cancel</button>`;
+//     const listItem = document.createElement('li');
+//     listItem.innerHTML = appointment;
+//     document.getElementById('appointment-list').appendChild(listItem);
+// });
 
 // Cancel Appointment Function
 function cancelAppointment(button) {

@@ -1,0 +1,118 @@
+/* General Styling */
+body {
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    background-color: #343a40;
+    color: #03071e;
+    margin: 0;
+    padding: 0;
+    background-image: url(images/shutterstock_1561815367.webp);
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #40916c;
+    font-size: 24px;
+    background: linear-gradient( #031a33, #0b3b5f, #0d6e85, #103d56);
+    background-size: 200% 200%;
+    font-family: 'Excon', sans-serif;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: wave 10s ease infinite;
+}
+
+
+h2{
+  background: linear-gradient( #031a33, #0b3b5f, #0d6e85, #103d56);
+  -webkit-background-clip: text;
+  background-clip: text; 
+  -webkit-text-fill-color: transparent;
+  font-family: 'Excon', sans-serif;
+  font-size: 2.5rem;
+  color: #2d6a4f;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px #2d6a4f; /* Light outline */
+  color: transparent; /
+}
+
+/* .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+} */
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #081c15;
+    background: linear-gradient(to bottom, #081c15, #2d6a4f, #40916c, #4ea8de, #80ffdb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: #081c15;
+    text-align: center;
+}
+
+label, input, textarea, button {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
+button {
+    background-color: #1b4332;
+    color: aliceblue;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #40916c;
+}
+
+#form-response {
+    margin-top: 20px;
+    color: #40916c;
+    font-weight: bold;
+}
+
+footer {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    text-align: center;
+    color: #081c15;
+}
+
+/* Main content */
+main {
+    margin-left: var(--sb-width);
+    margin-top: 20px; /* Space for the navbar */
+    padding: 20px;
+    transition: margin-left 0.5s ease-in-out;
+    overflow: auto;
+    resize: both;
+  }

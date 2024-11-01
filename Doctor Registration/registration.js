@@ -1,4 +1,8 @@
-document.getElementById("registrationForm").addEventListener("submit", function (event) {
+import { userRegistration, doctorRegistration, patientRegistration } from "../Services/Services";
+
+const userRegData = {};
+// Doctor Registration Logic
+document.getElementById("doctorRegistrationForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
     // Collect field values
@@ -6,27 +10,93 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     const lastName = document.getElementById("lastName").value.trim();
     const email = document.getElementById("email").value.trim();
     const phone = document.getElementById("phone").value.trim();
-    const country = document.getElementById("country").value.trim();
-    const city = document.getElementById("city").value.trim();
     const specialization = document.getElementById("specialization").value.trim();
     const licenseNumber = document.getElementById("licenseNumber").value.trim();
-    const clinicAffiliation = document.getElementById("clinicAffiliation").value.trim();
-
-    // Get checked languages from dropdown
-    const languages = Array.from(document.querySelectorAll('.dropdown-menu input[type="checkbox"]:checked'))
-        .map(checkbox => checkbox.value);
-
-    const declaration = document.getElementById("declaration").checked;
-
+    const password = document.getElementById("password").value;
+    const username = firstName + lastName;
+    
     // Validation for all fields
-    if (firstName && lastName && email && phone && country && city &&
-        specialization && licenseNumber && clinicAffiliation &&
-        languages.length > 0 && declaration) {
-        document.getElementById("message").textContent = "Registration successful!";
-        document.getElementById("message").style.color = "#28a745";
+    if (firstName && lastName && email && phone && specialization && licenseNumber && password) {
+        userRegData = {
+            username: username,
+            email: email,
+            password: password,
+            first_name: firstName,
+            last_name: lastName,
+            is_patient: false,
+            is_doctor: true
+        }
+        
+        async () => {
+            try{
+                dataResponse = await userRegistration(userRegData);
+
+                const doctorData = {
+                    user: dataResponse.id,
+                    specialization: specialization,
+                    license_number: licenseNumber,
+                    contact_number: phone 
+                }
+                dataResponse2 = await doctorRegistration(doctorData);
+                setCookie('roleId', dataResponse2.id, 7);
+                setCookie('userId', dataResponse2.user, 7);
+                setCookie('role', "doctor", 7);
+                alert("Doctor Registration Successful");
+            } catch(e) {
+                alert('An error occurred while registering the doctor. Please try again.')
+            }
+        }
     } else {
-        document.getElementById("message").textContent = "Please fill in all fields.";
-        document.getElementById("message").style.color = "red";
+        alert("Please fill in all fields");
+    }
+});
+
+document.getElementById("patientRegistrationForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    
+    const firstNamePatient = document.getElementById("firstNamePatient").value.trim();
+    const lastNamePatient = document.getElementById("lastNamePatient").value.trim();
+    const emailPatient = document.getElementById("emailPatient").value.trim();
+    const dob = document.getElementById("dob").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const phonePatient = document.getElementById("phonePatient").value.trim();
+    const medicalHistory = document.getElementById("medicalHistory").value.trim();
+    const password = document.getElementById("passwordPatient").value;
+    const username = firstNamePatient + lastNamePatient;
+    
+    if (firstNamePatient && lastNamePatient && emailPatient && dob && address && phonePatient && medicalHistory && password){
+        userRegData =  {
+            username: username,
+            email: emailPatient,
+            password: password,
+            first_name: firstNamePatient,
+            last_name: lastNamePatient,
+            is_patient: false,
+            is_doctor: true
+        }
+
+        async () => {
+            try{
+                dataResponse = await userRegistration(userRegData);
+
+                const patientData = {
+                    user: dataResponse.id,
+                    date_of_birth: dob,
+                    address: address,
+                    phone_number: phonePatient,
+                    medical_history: medicalHistory
+                }
+                dataResponse2 = await patientRegistration(patientData);
+                setCookie('roleId', dataResponse2.id, 7);
+                setCookie('userId', dataResponse2.user, 7);
+                setCookie('role', "patient", 7)
+                alert("Patient Registration Successful");
+            } catch(e){
+                alert('An error occurred while registering the doctor. Please try again.')
+            }
+        }
+    } else{
+        alert("Please fill in all fields");
     }
 });
 
@@ -56,3 +126,26 @@ document.addEventListener("DOMContentLoaded", function () {
         body.classList.toggle("sb-expanded");
     });
 });
+
+function showForm(formType){
+    const doctorForm = document.getElementById('doctorForm');
+    const patientForm = document.getElementById('patientForm');
+
+    if (formType === 'doctor'){
+        doctorForm.style.display = 'block';
+        patientForm.style.display = 'none';
+    } else {
+        doctorForm.style.display = 'none';
+        patientForm.style.display = 'block'
+    }
+}
+
+function setCookie(name, value, days){
+    let expires = "";
+    if(days){
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 *60* 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}

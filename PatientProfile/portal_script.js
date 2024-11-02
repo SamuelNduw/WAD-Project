@@ -1,44 +1,68 @@
-// Appointment Booking and Display
-// document.getElementById('appointment-form').addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     const doctor = document.getElementById('doctor').value;
-//     const date = document.getElementById('date').value;
-//     const time = document.getElementById('time').value;
+import { userPrescriptions, getAppointmentsByPatientId } from '../Services/Services.js';
 
-//     const appointment = `${doctor} - ${date} at ${time} <button onclick="cancelAppointment(this)">Cancel</button>`;
-//     const listItem = document.createElement('li');
-//     listItem.innerHTML = appointment;
-//     document.getElementById('appointment-list').appendChild(listItem);
-// });
+function getCookie(name){
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`)
+    if (parts.length == 2) return parts.pop().split(';').shift();
+    return null;
+  }
 
-// Cancel Appointment Function
-function cancelAppointment(button) {
-    button.parentElement.remove();
+// Patient Prescriptions
+let prescriptionsData = [];
+
+const patientId = getCookie('roleId');
+const getPrescriptions = async (patientId) => {
+    try{
+        const prescriptionsResponse = await userPrescriptions(patientId);
+        prescriptionsData = prescriptionsResponse.data;
+        console.log(prescriptionsData)
+
+        prescriptionsData.forEach(record => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${record.date_issued}</td><td>${record.medication_name}</td><td>${record.instructions}</td><td>${record.dosage}</td>`;
+            document.getElementById('history-list').appendChild(row);
+        });
+    } catch(e){
+        console.error("Error fetching prescriptions: ", e);
+    }
 }
+getPrescriptions(patientId);
 
-// Medical History Sample Data
-const historyData = [
-    { date: '2023-08-15', diagnosis: 'Flu', treatment: 'Rest and fluids', prescription: 'Ibuprofen 200mg' },
-    { date: '2023-05-22', diagnosis: 'Sprained Ankle', treatment: 'Brace and physiotherapy', prescription: 'Pain relievers' }
-];
-
-historyData.forEach(record => {
-    const row = document.createElement('tr');
-    row.innerHTML = `<td>${record.date}</td><td>${record.diagnosis}</td><td>${record.treatment}</td><td>${record.prescription}</td>`;
-    document.getElementById('history-list').appendChild(row);
-});
 
 // Prescriptions Sample Data
-const prescriptions = [
-    'Ibuprofen 200mg - Take one every 4 hours as needed',
-    'Antibiotic - Complete full course, twice a day for 7 days'
-];
+// const appointmentsData = [];
 
-prescriptions.forEach(prescription => {
-    const item = document.createElement('li');
-    item.textContent = prescription;
-    document.getElementById('prescription-list').appendChild(item);
-});
+const getAppointments = async (patientId) => {
+    try{
+        const json = {
+            patient_id: patientId
+        }
+        const appointmentsResponse = await getAppointmentsByPatientId(json);
+        const appointmentsData = appointmentsResponse.data;
+        console.log(appointmentsData);
+
+        appointmentsData.forEach(record => {
+            const appointmentDate = new Date(record.appointment_date);
+
+            // Extract the date in "YYYY-MM-DD" format
+            const date = appointmentDate.toISOString().split('T')[0];
+
+            // Extract the time in "HH:mm:ss" format
+            const time = appointmentDate.toISOString().split('T')[1].split('Z')[0];
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${date}</td>
+            <td>${time}</td>
+            <td>${record.reason_for_visit}</td>
+            <td>${record.doctor_info.first_name} ${record.doctor_info.last_name}</td>`
+            document.getElementById('appointment-list').appendChild(row);
+        });
+    } catch(e){
+        console.error('Error fetching appointments: ', e);
+    }
+}
+getAppointments(patientId);
 
 // Messaging with Doctor
 document.getElementById('message-form').addEventListener('submit', function(e) {

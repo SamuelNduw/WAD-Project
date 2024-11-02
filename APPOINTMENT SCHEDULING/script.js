@@ -1,51 +1,67 @@
-// script.js
+import { getPatientIdWithUserInfo, makeAppointment } from "../Services/Services.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleButton = document.querySelector("[data-resize-btn]");
-  const body = document.body;
+function getCookie(name){
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`)
+  if (parts.length == 2) return parts.pop().split(';').shift();
+  return null;
+}
 
-  toggleButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    body.classList.toggle("sb-expanded");
-  });
+document.querySelectorAll('.book-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const selectedDate = document.getElementById('datePicker').value;
+    // const selectedDoctor = document.getElementById('doctorSelect').value;
+    const selectedTime = button.parentElement.textContent.trim().split(' ')[0];
+    
+    if (!selectedDate) {
+      alert('Please select a date.');
+      return;
+    }
 
-  // Set active class based on current URL
-  const sidebarLinks = document.querySelectorAll("aside nav a");
-  const currentPage = window.location.href;
+    // Convert selected time (e.g., "9:00 AM") to 24-hour format for ISO string
+    const timeParts = selectedTime.split(":");
+    let hours = parseInt(timeParts[0], 10);
+    const minutes = parseInt(timeParts[1], 10);
+    
+    if (button.parentElement.textContent.includes("PM") && hours < 12) {
+      hours += 12;
+    } else if (button.parentElement.textContent.includes("AM") && hours === 12) {
+      hours = 0;
+    }
 
-  // sidebarLinks.forEach((link) => {
-  //   if (link.href === currentPage) {
-  //     link.classList.add("active");
-  //   } else {
-  //     link.classList.remove("active"); // Remove from other links
-  //   }
-  // });
+    // Combine date and time
+    const appointmentDate = new Date(selectedDate);
+    appointmentDate.setUTCHours(hours, minutes, 0, 0); // UTC time
 
+    const formattedDate = appointmentDate.toISOString().split('.')[0] + "Z";
 
-  // Event listener for booking buttons
-  document.querySelectorAll(".book-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      // Prompt user for information
-      const firstName = prompt("Enter your First Name:");
-      const lastName = prompt("Enter your Last Name:");
-      const email = prompt("Enter your Email:");
+    const patientFirstName = prompt('Enter the patient\'s first name:');
+    const patientLastName = prompt('Enter the patient\'s last name:');
+    const patientUsername = patientFirstName + patientLastName;
+    const patientEmail = prompt('Enter the patient\'s email:');
+    const reasonForVisit = prompt('Enter the reason for patient\'s appointment:');
 
-      // Ensure user has entered all required information
-      if (!firstName || !lastName || !email) {
-        alert("All fields are required. Please fill in all details to proceed with booking.");
-        return;
+    // Logic to make Appointment and store it in db
+    if (patientFirstName && patientLastName && patientEmail) {
+      alert(`Appointment booked for ${patientEmail} on ${formattedDate}.`);
+      try{
+        const makeAppointmentHandler = async (username, email) => {
+          const dataResponse = await getPatientIdWithUserInfo(username, email);
+          const appointmentInfo = {
+            doctor: getCookie('roleId'),
+            patient: dataResponse.data.patient_id,
+            appointment_date: formattedDate,
+            reason_for_visit: reasonForVisit,
+            status: "Scheduled"
+          }
+          await makeAppointment(appointmentInfo);
+        }
+        makeAppointmentHandler(patientUsername, patientEmail);
+      } catch(e){
+        alert("Error occurred while making appointment: ", e);
+        console.error("Error occurred while making appointment: ", e);
       }
-
-      // Check if the time slot is available
-      const isBooked = Math.random() < 0.5; // Randomly simulate slot availability
-      if (isBooked) {
-        const bookingTime = button.parentElement.textContent.trim();
-        alert(
-          `Booking successful!\nPatient: ${firstName} ${lastName}\nEmail: ${email}\nYour appointment is scheduled for ${bookingTime}.`
-        );
-      } else {
-        alert("This time slot is unavailable. Please select a different time.");
-      }
-    });
+    }
   });
 });
+

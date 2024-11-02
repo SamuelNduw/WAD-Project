@@ -77,6 +77,12 @@ class DoctorSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+class DoctorInfoSerializer(serializers.ModelSerializer):
+    first_name = serializers.CharField(source='user.first_name', read_only=True)
+    last_name = serializers.CharField(source='user.last_name', read_only=True)
+    class Meta:
+        model = Doctor
+        fields = ['first_name', 'last_name']
 
 class PrescriptionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -87,3 +93,10 @@ class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appointment
         fields = ['id', 'doctor', 'patient', 'appointment_date', 'reason_for_visit', 'status']
+
+class AppointmentSerializer2(serializers.ModelSerializer):
+    doctor_info = DoctorInfoSerializer(source='doctor', read_only=True)
+
+    class Meta:
+        model = Appointment
+        fields = ['id', 'doctor', 'doctor_info', 'patient', 'appointment_date', 'reason_for_visit', 'status']

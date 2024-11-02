@@ -4,7 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from .models import User, Doctor, Patient, Prescription, Appointment
-from .serializer import UserSerializer, PatientSerializer, DoctorSerializer, PrescriptionSerializer, AppointmentSerializer
+from .serializer import UserSerializer, PatientSerializer, DoctorSerializer, PrescriptionSerializer, AppointmentSerializer, AppointmentSerializer2
+from django.db.models import Q
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -58,6 +59,23 @@ class AppointmentViewSet(viewsets.ModelViewSet):
             return Appointment.objects.filter(patient_id=patient_id)
         return super().get_queryset()
     
+class PatientAppointmentsView(APIView):
+    permission_classes = [AllowAny]
+    def post(self, request, *args, **kwargs):
+        patientId = request.data.get('patient_id')
+
+        appointments = Appointment.objects.filter(patient_id=patientId)
+
+class PatientAppointmentsByPostView(APIView):
+    permission_classes = [AllowAny]
+    def post(self, request, *args, **kwargs):
+        patient_id = request.data.get('patient_id')
+        if not patient_id:
+            return Response({"error": "patient_id is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        appointments = Appointment.objects.filter(patient_id=patient_id)
+        serializer = AppointmentSerializer2(appointments, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class LoginView(APIView):
     permission_classes = [AllowAny]
@@ -89,3 +107,19 @@ class LoginView(APIView):
             }, status=status.HTTP_200_OK)
         else:
             return Response({"error", "Invalid username or password"}, status.status.HTTP_400_BAD_REQUEST)
+
+class GetPatientIDView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, username, email, *args, **kwargs):
+        try:
+            # Use `iexact` for a case-insensitive match on the username
+            user = User.objects.get(Q(username__iexact=username) & Q(email__iexact=email))
+            # Check if the user has a Patient profile
+            patient = Patient.objects.filter(user=user).first()
+            if patient:
+                return Response({"patient_id": patient.id}, status=status.HTTP_200_OK)
+            else:
+                return Response({"error": "User is not a patient"}, status=status.HTTP_404_NOT_FOUND)
+        except User.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)

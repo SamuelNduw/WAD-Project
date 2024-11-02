@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="../uni-css/uni-sidebar.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link href="https://api.fontshare.com/v2/css?f[]=amulya@401&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="auth-buttons">
         <a class="login-btn" href="../Login/Login.html">Login</a>
-        <a class="signup-btn" href="../Login/SignUp.html">Sign Up</a>
+        <a class="signup-btn" href="../Doctor Registration/doctor-registration.html">Sign Up</a>
     </div>
     <aside>
         <nav>
@@ -32,9 +33,9 @@
     <h1>Patient Portal - Electronic Health Information System (EHIS)</h1>
     
 
-    <!-- Medical History Section -->
+    <!-- Prescription List -->
     <section id="medical-history">
-        <h2>Medical History</h2>
+        <h2>Your Prescriptions</h2>
         <table>
             <thead>
                 <tr>
@@ -50,12 +51,22 @@
         </table>
     </section>
 
-    <!-- Prescription Section -->
-    <section id="prescriptions">
-        <h2>Prescriptions</h2>
-        <ul id="prescription-list">
-            <!-- Prescription data listed here -->
-        </ul>
+    <!-- Appointment List -->
+    <section id="appointmentsSection">
+        <h2>Your Appoinments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Reason for visit</th>
+                    <th>Doctor</th>
+                </tr>
+            </thead>
+            <tbody id="appointment-list">
+                <!-- Medical history records displayed here -->
+            </tbody>
+        </table>
     </section>
 
     <!-- Messaging Section -->
@@ -79,6 +90,6 @@
         <p>&copy; 2024 Electronic Health Information System. All Rights Reserved.</p>
     </footer>
     <script src="../uni-css/script.js"></script>
-    <script src="portal_script.js"></script>
+    <script type="module" src="portal_script.js"></script>
 </body>
 </html>

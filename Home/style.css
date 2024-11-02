@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url('Pictures/doctor-removebg-preview.png');
+  background-image: url('Pictures/health-care-.jpg');
   background-size: cover;
   --sb-width: 5rem;
   font-family: 'Array', sans-serif;
@@ -108,8 +108,8 @@ main {
   min-height: 100vh;
   width: 50%;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -124,10 +124,10 @@ main {
 }
 
 .hero-section .hero-details .title {
-  font-size: 2.3rem;
+  font-size: 2.9rem;
   color: aliceblue;
   font-family: sans-serif;
-
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.368);
 }
 
 .hero-section .hero-details .subtitle {
@@ -135,6 +135,8 @@ main {
   max-width: 70%;
   font-size: 2rem;
   font-weight: 600;
+  color: rgba(255, 255, 255, 0.626);
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.368);
 }
 
 .hero-section .hero-details .description {
@@ -142,6 +144,7 @@ main {
   max-width: 70%;
   margin: 24px 0 40px;
   font-size: 1.12rem;
+  text-shadow: 5px 2px 20px black;
 }
 
 .hero-section .hero-details .buttons {

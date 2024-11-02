@@ -109,34 +109,9 @@ document.getElementById("patientRegistrationForm").addEventListener("submit", fu
     }
 });
 
-// Dropdown toggle functionality
-// document.addEventListener("DOMContentLoaded", function () {
-//     const dropdownToggle = document.querySelector(".dropdown-toggle");
-//     const dropdownMenu = document.querySelector(".dropdown-menu");
-
-//     // Toggle dropdown menu visibility
-//     dropdownToggle.addEventListener("click", function () {
-//         dropdownMenu.parentElement.classList.toggle("open");
-//     });
-
-//     // Close dropdown when clicking outside
-//     document.addEventListener("click", function (event) {
-//         if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-//             dropdownMenu.parentElement.classList.remove("open");
-//         }
-//     });
-
-
-//     const toggleButton = document.querySelector("[data-resize-btn]");
-//     const body = document.body;
-
-//     toggleButton.addEventListener("click", (e) => {
-//         e.preventDefault();
-//         body.classList.toggle("sb-expanded");
-//     });
-// });
-
-
+document.getElementById("loginButton").addEventListener('click', function(event){
+    window.location.href = "../Login/Login.html";
+})
 
 function setCookie(name, value, days){
     let expires = "";

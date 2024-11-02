@@ -135,4 +135,8 @@ aside {
     display: flex;
     gap:5em;
   }
-    
+   
+  
+.hidden{
+  display: none;
+}

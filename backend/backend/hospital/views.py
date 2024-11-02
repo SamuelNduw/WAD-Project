@@ -39,12 +39,25 @@ class DoctorViewSet(viewsets.ModelViewSet):
 class PrescriptionViewSet(viewsets.ModelViewSet):
     queryset = Prescription.objects.all()
     serializer_class = PrescriptionSerializer
-    permission_class = [AllowAny]
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        patient_id = self.request.query_params.get('patient_id')
+        if patient_id:
+            return Prescription.objects.filter(patient_id=patient_id)
+        return super().get_queryset()
 
 class AppointmentViewSet(viewsets.ModelViewSet):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
-    permission_class = [AllowAny]
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        patient_id = self.request.query_params.get('patient_id')
+        if patient_id:
+            return Appointment.objects.filter(patient_id=patient_id)
+        return super().get_queryset()
+    
 
 class LoginView(APIView):
     permission_classes = [AllowAny]

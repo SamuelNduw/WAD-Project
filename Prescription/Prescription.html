@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css" >
+    <title>Prescription Page</title>
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="../uni-css/uni-sidebar.css">
+    <style>
+        body {
+            background-image: url(./images/medical.jpeg); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <link href="https://api.fontshare.com/v2/css?f[]=excon@900&display=swap" rel="stylesheet">
-  <link href="https://api.fontshare.com/v2/css?f[]=excon@100,900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
-
 <body>
-    <aside>
+    <div class="auth-buttons">
+        <button  class="login-btn" id="loginButton">Login</button>
+        <!-- <button class="signup-btn">Sign Up</button> -->
+      </div>
+      <!-- Sidebar Navigation -->
+      <aside>
         <nav>
           <ul id="myList">
             <li id="item1"><a href="../Home/home.html" class="active"><i class="bx bx-home-circle"></i><span>Home</span></a></li>
@@ -28,28 +37,34 @@
           </ul>
         </nav>
       </aside>
-      
     <main>
-        <section class="hero-section">
-          <div class="section-content">
-            <div class="hero-details">
-              <h2 class="title"> Virtual medical Doctor</h1>
-              <h3 class="subtitle"> Your Health, Our Priority</h1>
-              <p class="description">Providing compassionate and comprehensive <br> healthcare services for you and <br> family.</p>
+        <header>
+            <h1>MAKE PRESCRIPTONS</h1>
+        </header>
+        <form id="prescriptionForm">
+            <h2>Patient Information</h2>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+            <br>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <h2>Prescription</h2>
+            <label for="medication">Medication Name:</label>
+            <input type="text" id="medication" name="medication1">
+            <label for="dosage">Dosage:</label>
+            <input type="text" id="dosage" name="dosage1">
+            <label for="instructions">Instructions:</label>
+            <input type="text" id="instructions" name="instructions">
 
-              <div class="buttons">
-                <a href="../Doctor Registration/doctor-registration.html" class="button book-now">Get Started</a>
-                <a href="../About Webpage/about.html" class="button contact-us">About Us</a>
-              </div> 
-            </div>
-            <!-- <div class="hero-image-wrapper">
-              <img src="Pictures\doctor-removebg-preview.png" alt="" class="hero-image">
-            </div> */!-->
-          </div>
-        </section>
+            <button type="submit">Submit</button>
+        </form>
     </main>
-    <script src="script.js"></script>
+
+    
+    <script type="module" src="script.js"></script>
     <script src="../uni-css/script.js"></script>
 </body>
-
 </html>

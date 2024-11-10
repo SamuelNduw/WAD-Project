@@ -43,7 +43,6 @@ document.querySelectorAll('.book-btn').forEach(button => {
 
     // Logic to make Appointment and store it in db
     if (patientFirstName && patientLastName && patientEmail) {
-      alert(`Appointment booked for ${patientEmail} on ${formattedDate}.`);
       try{
         const makeAppointmentHandler = async (username, email) => {
           const dataResponse = await getPatientIdWithUserInfo(username, email);
@@ -57,6 +56,7 @@ document.querySelectorAll('.book-btn').forEach(button => {
           await makeAppointment(appointmentInfo);
         }
         makeAppointmentHandler(patientUsername, patientEmail);
+        alert(`Appointment booked for ${patientEmail} on ${formattedDate}.`);
       } catch(e){
         alert("Error occurred while making appointment: ", e);
         console.error("Error occurred while making appointment: ", e);

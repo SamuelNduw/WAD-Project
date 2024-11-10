@@ -1,5 +1,3 @@
-// script.js
-
 function showForm(formType){
   const doctorForm = document.getElementById('doctorForm');
   const patientForm = document.getElementById('patientForm');
@@ -12,3 +10,13 @@ function showForm(formType){
       patientForm.style.display = 'block'
   }
 }
+
+const links = document.querySelectorAll('.nav-link');
+
+links.forEach(link => {
+  link.addEventListener('click', function(){
+    links.forEach(link => link.classList.remove('active'));
+
+    this.classList.add('active');
+  })
+})

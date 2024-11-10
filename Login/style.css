@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -93,4 +93,102 @@ h2 {
 }
 .apple:hover {
     background-color: #3c374f;
-}
+} */
+
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Array', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #1b4332;
+    background-color: #343a40;
+    background-image: url(../Prescription/images/medical.jpeg); /* Background from styling.css */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #2d6a4f;
+    font-family: 'Excon', sans-serif;
+    margin-bottom: 1.5rem;
+    background: linear-gradient( #031a33, #0b3b5f, #0d6e85, #103d56);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1b4332;
+    font-family: 'Excon', sans-serif;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  input[type="submit"] {
+    background-color: #1b4332;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #555;
+  }
+  
+  .redirect-link {
+    margin-top: 1rem;
+    color: #b7b7b7;
+  }
+  
+  .redirect-link a {
+    color: #4A4063;
+    text-decoration: none;
+  }
+  
+  .redirect-link a:hover {
+    color: #2d6a4f;
+  }
+  

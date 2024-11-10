@@ -32,7 +32,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
                 }
             } catch(e){
                 console.error("Error during authentication: ", e);
-                alert('An error occurred while registering the doctor. Please try again.');
+                alert('An error occurred while. Wrong password or user does not exist. Please try again.');
             }
         }
         loginUser();

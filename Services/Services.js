@@ -45,6 +45,14 @@ export const userPrescriptions = async (patientId) => {
     return response;
 }
 
+export const makePrescription = async (formData) => {
+    const response = await axios.post(`${URL}/prescriptions/`, formData, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    return response;
+}
 export const makeAppointment = async (formData) => {
     const response = await axios.post(`${URL}/appointments/`, formData, {
         headers: {

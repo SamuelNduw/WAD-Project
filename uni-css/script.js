@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.querySelector("[data-resize-btn]");
   const body = document.body;

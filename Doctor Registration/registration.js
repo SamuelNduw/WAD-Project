@@ -12,7 +12,7 @@ document.getElementById("doctorRegistrationForm").addEventListener("submit", fun
     const email = document.getElementById("email").value.trim();
     const phone = document.getElementById("phone").value.trim();
     const specialization = document.getElementById("specialization").value.trim();
-    const licenseNumber = document.getElementById("licenseNumber").value.trim();
+    const licenseNumber = document.getElementById("licenseNumber").value;
     const password = document.getElementById("password").value;
     const username = firstName + lastName;
     

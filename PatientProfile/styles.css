@@ -74,15 +74,7 @@ table, th, td {
     padding: 8px;
 }
 
-#chat-box {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    padding: 10px;
-    border: 1px solid #2a9d8f;
-    height: 200px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-}
+
 footer {
     margin-left: var(--sb-width);
     background-color: rgba(255, 255, 255, 0.1);
@@ -128,4 +120,47 @@ h2 {
     animation: wave 10s ease infinite;
     text-align: center;
     margin: 1rem 0;
+}
+
+/** Messaging/Chatbox **/
+#ollama-chat {
+    margin-top: 20px;
+}
+
+#chat-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 10px;
+    border: 1px solid #2a9d8f;
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-message {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+.chat-message.user {
+    align-self: flex-end;
+    background-color: #1b4332;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    max-width: 60%;
+}
+
+.chat-message.bot {
+    align-self: flex-start;
+    background-color: #40916c;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    max-width: 60%;
 }

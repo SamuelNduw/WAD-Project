@@ -64,21 +64,78 @@ const getAppointments = async (patientId) => {
 }
 getAppointments(patientId);
 
-// Messaging with Doctor
-document.getElementById('message-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const doctorId = document.getElementById('doctor-id').value;
-    const message = document.getElementById('message').value;
-    const messageItem = document.createElement('div');
-    messageItem.textContent = `Patient: ${message}`;
-    document.getElementById('chat-box').appendChild(messageItem);
-    document.getElementById('message').value = '';
 
-    // Simulate doctor response based on selected doctor
-    setTimeout(() => {
-        const response = document.createElement('div');
-        response.textContent = `Doctor (${doctorId === 'matheus' ? 'Dr. Matheus Astofel' : 'Dr. Jason Petrus'}): Thank you for your message.`;
-        document.getElementById('chat-box').appendChild(response);
-        document.getElementById('chat-box').scrollTop = document.getElementById('chat-box').scrollHeight;
-    }, 1000);
+
+
+// Messaging/Chat login
+
+document.addEventListener("DOMContentLoaded", () => {
+    const chatForm = document.getElementById("chat-form");
+    const chatBox = document.getElementById("chat-box");
+
+    const appendMessage = (message, sender) => {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `chat-message ${sender}`;
+        messageDiv.textContent = message;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        return messageDiv;
+    };
+
+    chatForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const userInput = document.getElementById("user-message").value;
+        appendMessage(userInput, "user");
+
+        const botMessageDiv = appendMessage("...", "bot"); // Placeholder while waiting for response
+
+        try {
+            const response = await fetch("http://localhost:11434/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    model: "hf.co/HuggingFaceTB/SmolLM2-1.7B-Instruct-GGUF",
+                    messages: [
+                        { role: "user", content: `${userInput} (give a maximum of two sententes in response)` }
+                    ],
+                    keep_alive: 180,
+                    stream: true,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const reader = response.body
+                .pipeThrough(new TextDecoderStream())
+                .getReader();
+
+            let botMessage = "";
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                if (value.trim()) {
+                    try {
+                        const json = JSON.parse(value);
+                        if (json.message && json.message.content) {
+                            botMessage += json.message.content;
+                            botMessageDiv.textContent = botMessage;
+                            chatBox.scrollTop = chatBox.scrollHeight;
+                        }
+                    } catch (err) {
+                        console.error("Error parsing JSON:", err);
+                    }
+                }
+            }
+        } catch (error) {
+            botMessageDiv.textContent = "Error connecting to Ollama. Please try again later.";
+        }
+
+        document.getElementById("user-message").value = "";
+    });
 });
+
+

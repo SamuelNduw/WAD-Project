@@ -7,6 +7,13 @@ from .models import User, Doctor, Patient, Prescription, Appointment
 from .serializer import UserSerializer, PatientSerializer, DoctorSerializer, PrescriptionSerializer, AppointmentSerializer, AppointmentSerializer2
 from django.db.models import Q
 
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+from django.http.response import StreamingHttpResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -123,3 +130,29 @@ class GetPatientIDView(APIView):
                 return Response({"error": "User is not a patient"}, status=status.HTTP_404_NOT_FOUND)
         except User.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+# ChatBot
+load_dotenv()
+
+client = OpenAI(
+    api_key = os.getenv("OPENAI_API_KEY")
+)
+
+def generate_response(question):
+    stream = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role":"user", "content": question}],
+        stream=True
+    )
+
+    for chunk in stream:
+        if chunk.choices[0].delta.content is not None:
+            yield(chunk.choices[0].delta.content)
+
+@csrf_exempt
+def answer(request):
+    data = json.loads(request.body)
+    print(data)
+    message = data["message"]
+    response = StreamingHttpResponse(generate_response(message), status=200, content_type="text/plain")
+    return response
